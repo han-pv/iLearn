@@ -17,7 +17,7 @@ Route::get('/students', [StudentController::class, 'index']);
 
 
 
-Route::get('/departments', [DepartmentController::class, 'index']);
+// Route::get('/departments', [DepartmentController::class, 'index']);
 
-Route::get('/employees', [EmployeeController::class, 'index']);
+// Route::get('/employees', [EmployeeController::class, 'index']);
 

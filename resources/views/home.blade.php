@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}">
-  <link rel="stylesheet" href="{{ asset("css/bootstrap-icons.min.css") }}">
-  <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
-</head>
 
-<body>
-
+@section('content')
   <div class="container-sm">
     <div>
       <a href="/teachers">Teachers</a>
@@ -24,10 +14,6 @@
 
     <h1>Bizin kurslarymyz</h1>
     @foreach ($courses as $course)
-      <div class="h4 text-success">{{ $course }}</div>
+      <div class="h4 text-success">{{ $course->id }}{{ $course->name }}</div>
     @endforeach
-
-  </div>
-</body>
-
-</html>
+@endsection
