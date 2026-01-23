@@ -82,6 +82,12 @@
                 <div class="text-muted small">
                     Last updated: {{ $teacher->updated_at->diffForHumans() }}
                 </div>
+
+                @foreach ($teacher->students as $student)
+                    <div>
+                        {{ $student->name }}
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
