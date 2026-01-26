@@ -10,7 +10,15 @@ class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        $students = Student::where("course_id", 8)
+        $request->validate([
+            "courseId" => ["nullable", "integer", "exists:courses,id"],
+        ]);
+
+        $f_course_id = $request->courseId ? $request->courseId : null;
+
+        $students = Student::when($f_course_id, function ($query) use ($f_course_id) {
+            $query->where("course_id", $f_course_id);
+        })
             ->paginate(15);
 
         $cources = Course::get();

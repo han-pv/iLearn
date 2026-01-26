@@ -4,19 +4,28 @@
     <div class="container-xl py-4">
         <h1 class="text-success">Students Page</h1>
         <div class="my-4">
-            <form action="/students" method="get" class="">
+            <form action="/students" method="get">
+                <!-- courseId=2 -->
                 <label for="">Course: </label>
-                <select class="form-select" name="course">
+                <select class="form-select" name="courseId">
                     <option selected>-</option>
                     @foreach ($cources as $cource)
                         <option value="{{ $cource->id }}">{{ $cource->name }}</option>
                     @endforeach
                 </select>
-                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                @error('courseId')
+                    <div class="alert alert-danger small alert-dismissible fade show mt-2" role="alert">
+                        {{ $message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @enderror
+                <button type="submit" class="btn btn-primary mt-2">
+                    Submit
+                </button>
             </form>
         </div>
-        <div>
 
+        <div>
             <div>
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
