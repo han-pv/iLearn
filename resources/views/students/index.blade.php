@@ -2,26 +2,40 @@
 
 @section('content')
     <div class="container-xl py-4">
-        <h1 class="text-success">Students Page</h1>
+        <h1 class="text-primary">Students Page</h1>
         <div class="my-4">
-            <form action="/students" method="get">
-                <!-- courseId=2 -->
-                <label for="">Course: </label>
-                <select class="form-select" name="courseId">
-                    <option selected>-</option>
-                    @foreach ($cources as $cource)
-                        <option value="{{ $cource->id }}">{{ $cource->name }}</option>
-                    @endforeach
-                </select>
-                @error('courseId')
-                    <div class="alert alert-danger small alert-dismissible fade show mt-2" role="alert">
-                        {{ $message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <form action="{{ route('students.index') }}" method="get">
+                <div class="row row-cols-3 g-3">
+                    <div class="col">
+                        <label class="form-label">Course:</label>
+                        <select class="form-select" name="courseId">
+                            <option value="">-</option>
+                            @foreach ($cources as $cource)
+                                <option value="{{ $cource->id }}">
+                                    {{ $cource->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                @enderror
-                <button type="submit" class="btn btn-primary mt-2">
-                    Submit
-                </button>
+                    <div class="col">
+                        <label class="form-label">Age:</label>
+                        <div class="row g-2">
+                            <div class="col">
+                                <input type="text" class="form-control" name="ageFrom">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="ageTo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex align-items-end">
+                        <div class="d-flex w-100">
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                            <button type="reset" class="btn btn-secondary w-100 ms-2">Reset</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
 
@@ -34,6 +48,7 @@
                             <th>Name</th>
                             <th>Lastname</th>
                             <th>Birth Date</th>
+                            <th>Age</th>
                             <th>Phone</th>
                             <th>Parent Phone Number</th>
                             <th>Branch</th>
@@ -49,6 +64,7 @@
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->lastname }}</td>
                             <td>{{ $student->birth_date }}</td>
+                            <td>{{ $student->age }}</td>
                             <td>{{ $student->phone }}</td>
                             <td>{{ $student->parent_phone }}</td>
                             <td>{{ $student->branch_id }}</td>

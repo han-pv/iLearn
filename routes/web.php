@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name("home");
 
-Route::get('/teachers', [TeacherController::class, 'index']);
+Route::get('/teachers', [TeacherController::class, 'index'])->name("teachers.index");
 
-Route::get('/teachers/{id}', [TeacherController::class, 'show']);
+Route::get('/teachers/{id}', [TeacherController::class, 'show'])->name("teachers.show");
 
-Route::get('/students', [StudentController::class, 'index']);
+Route::get('/students', [StudentController::class, 'index'])->name("students.index");
 
-Route::get('/students/{id}', [StudentController::class, 'show']);
+Route::get('/students/{id}', [StudentController::class, 'show'])->name("students.show");
 
 
 // Route::get('/departments', [DepartmentController::class, 'index']);
