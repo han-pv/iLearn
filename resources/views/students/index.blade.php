@@ -2,10 +2,21 @@
 
 @section('content')
     <div class="container-xl py-4">
-        <h1 class="text-primary">Students Page</h1>
+        <h1 class="text-primary">Students</h1>
         <div class="my-4">
             <form action="{{ route('students.index') }}" method="get">
                 <div class="row row-cols-3 g-3">
+                    <div class="col">
+                        <label class="form-label">Branch:</label>
+                        <select class="form-select" name="branchId">
+                            <option value="">-</option>
+                            @foreach ($branches as $branch)
+                                <option value="{{ $branch->id }}">
+                                    {{ $branch->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="col">
                         <label class="form-label">Course:</label>
                         <select class="form-select" name="courseId">
@@ -13,6 +24,28 @@
                             @foreach ($cources as $cource)
                                 <option value="{{ $cource->id }}">
                                     {{ $cource->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Teacher:</label>
+                        <select class="form-select" name="teacherId">
+                            <option value="">-</option>
+                            @foreach ($teachers as $teacher)
+                                <option value="{{ $teacher->id }}">
+                                    {{ $teacher->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Classroom:</label>
+                        <select class="form-select" name="classroomId">
+                            <option value="">-</option>
+                            @foreach ($classrooms as $classroom)
+                                <option value="{{ $classroom->id }}">
+                                    {{ $classroom->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -32,7 +65,7 @@
                     <div class="col d-flex align-items-end">
                         <div class="d-flex w-100">
                             <button type="submit" class="btn btn-primary w-100">Submit</button>
-                            <button type="reset" class="btn btn-secondary w-100 ms-2">Reset</button>
+                            <a href="{{ route('students.index') }}" class="btn btn-secondary w-100 ms-2">Reset</a>
                         </div>
                     </div>
                 </div>

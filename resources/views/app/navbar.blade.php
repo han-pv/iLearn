@@ -11,7 +11,10 @@
                     <a class="nav-link {{ request()->routeIs('home') ? "active" : "" }}" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('teachers.*') ? "active" : "" }}" href="/teachers">Teachers</a>
+                    <a class="nav-link {{ request()->routeIs('courses.*') ? "active" : "" }}" href="{{ route("courses.index") }}">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('teachers.*') ? "active" : "" }}" href="{{ route("teachers.index") }}">Teachers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('students.*') ? "active" : "" }}" href="{{ route('students.index') }}">Students</a>

@@ -27,14 +27,12 @@ class CourseSeeder extends Seeder
         ];
 
         foreach ($courses as $course) {
-            $teacher = Teacher::inRandomOrder()->first();
             Course::create([
                 "name" => $course,
                 "season" => 'Winter 2026',
                 "start_date" => now(),
                 "end_date" => now()->addMonths(3),
                 "description" => null,
-                "teacher_id" =>$teacher->id,
             ]);
         }
     }
