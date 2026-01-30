@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
-use App\Models\Teacher;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -14,7 +13,6 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-
         $courses = [
             "Beginner",
             "Elemantary",
