@@ -9,7 +9,8 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $teachers = Teacher::get();
+        $teachers = Teacher::paginate(15)
+            ->withQueryString();
 
         return view("teachers.index")->with([
             "teachers" => $teachers,

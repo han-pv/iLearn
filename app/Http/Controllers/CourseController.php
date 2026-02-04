@@ -9,7 +9,8 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::get();
+        $courses = Course::paginate(15)
+            ->withQueryString();
 
         return view('courses.index')->with([
             "courses" => $courses
@@ -24,9 +25,9 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required|string|max:255",
-            "season" => "required|string|max:255",
-            "description" => "nullable|string",
+            "name" => ["required", "string", "max:255"],
+            "season" => ["required", "string", "max:255"],
+            "description" => ["nullable", "string", "max:1025"],
         ]);
 
         Course::create([
@@ -38,8 +39,48 @@ class CourseController extends Controller
         ]);
 
         return to_route("courses.index")->with([
-            "success" => "Ustunlikli course doredildi",
+            "success" => "Course created successfully",
         ]);
 
+    }
+
+    public function edit($id)
+    {
+        $course = Course::findOrFail($id);
+
+        return view("courses.edit")->with([
+            "course" => $course,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            "name" => ["required", "string", "max:255"],
+            "season" => ["required", "string", "max:255"],
+            "description" => ["nullable", "string", "max:1025"],
+        ]);
+
+        $course = Course::findOrFail($id);
+
+        $course->update([
+            "name" => $request->name,
+            "season" => $request->season,
+            "description" => $request->description ? $request->description : null,
+        ]);
+
+        return to_route("courses.index")->with([
+            "success" => "Course updated successfully",
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $course = Course::findOrFail($id);
+        $course->delete();
+
+        return to_route("courses.index")->with([
+            "success" => "Course deleted successfully",
+        ]);
     }
 }
