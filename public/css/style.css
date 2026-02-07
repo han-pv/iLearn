@@ -1,5 +1,5 @@
 :root {
-  --primary: #071C2E;
+  --primary: #1b3f63;
   --primary-light: #e8f5f7;
   --primary-dark: #071c2ec7;
   --text-dark: #2c3e50;
@@ -10,8 +10,8 @@
   --warning: #f39c12;
   --danger: #e74c3c;
   --info: #3498db;
-  --sidebar-width: 280px;
-  --sidebar-collapsed: 70px;
+  --sidebar-width: 250px;
+  --sidebar-collapsed: 30px;
 }
 
 * {
@@ -149,6 +149,10 @@ body {
 
 .sidebar-menu {
   list-style: none;
+}
+
+ul {
+  padding: 0 10px;
 }
 
 .sidebar-menu-item {
@@ -500,7 +504,7 @@ body {
 }
 
 .table-header {
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--primary);
   color: white;
   display: flex;
@@ -512,7 +516,7 @@ body {
 
 .table-header h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 

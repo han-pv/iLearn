@@ -20,7 +20,7 @@ class ClassroomFactory extends Factory
         $branch = Branch::inRandomOrder()->first(); // 1-4
         return [
             "name" => fake()->numberBetween(100, 200),
-            "capacity"=> fake()->numberBetween(15, 20),
+            "capacity" => fake()->numberBetween(15, 20),
 
             "branch_id" => $branch->id,
         ];

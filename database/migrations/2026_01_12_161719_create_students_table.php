@@ -15,18 +15,11 @@ return new class extends Migration {
             $table->string('name');
             $table->string('lastname');
             $table->date('birth_date');
-            $table->integer('age');
             $table->string('phone');
             $table->string('parent_phone')->nullable();
             $table->enum('gender', ['male', 'female']);
             $table->string('address');
             $table->string('image')->nullable();
-
-            $table->foreignId('branch_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('teacher_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('classroom_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
-
             $table->timestamps();
         });
     }

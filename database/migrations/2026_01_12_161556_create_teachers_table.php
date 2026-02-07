@@ -22,9 +22,6 @@ return new class extends Migration {
             $table->string('education');
             $table->string('bio')->nullable();
             $table->decimal('salary', 10, 2)->nullable(); // 5500,50
-
-            $table->foreignId('branch_id')->constrained()->cascadeOnDelete();
-
             $table->timestamps();
         });
     }

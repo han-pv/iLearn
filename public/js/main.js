@@ -46,24 +46,6 @@ window.addEventListener('resize', function() {
 });
 
 // ============================================
-// ACTIVE LINK HIGHLIGHTING
-// ============================================
-
-function setActiveLink() {
-  const currentPath = window.location.pathname;
-  const links = document.querySelectorAll('.sidebar-link');
-
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && (href === currentPath || currentPath.includes(href.replace(/\/$/, '')))) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-}
-
-// ============================================
 // DASHBOARD DATA LOADING
 // ============================================
 
@@ -207,9 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
       closeSidebar();
     });
   });
-
-  // Set active link based on current page
-  setActiveLink();
 
   // Load dashboard data if on dashboard page
   if (document.querySelector('.dashboard-container')) {
