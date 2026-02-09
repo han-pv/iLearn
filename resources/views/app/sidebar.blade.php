@@ -48,6 +48,15 @@
                 <span>Groups</span>
             </a>
         </li>
+        <li class="sidebar-menu-item mt-auto">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="sidebar-link logout-btn">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                </button>
+            </form>
+        </li>
     </ul>
 </aside>
 

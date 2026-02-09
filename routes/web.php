@@ -1,43 +1,62 @@
 <?php
 
-use App\Http\Controllers\CourseController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('home');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name("home");
-
-Route::get('/teachers', [TeacherController::class, 'index'])->name("teachers.index");
-Route::get('/teachers/{id}', [TeacherController::class, 'show'])->name("teachers.show");
-
-Route::get('/students', [StudentController::class, 'index'])->name("students.index");
-Route::get('/students/{id}', [StudentController::class, 'show'])->name("students.show");
-
-
-Route::controller(CourseController::class)
-    ->name("courses.")
-    ->prefix("courses")
+Route::middleware("guest")
+    ->middleware("throttle:60,1")
     ->group(function () {
-        Route::get('/create', 'create')->name("create");
+        Route::get('/login', function () {
+            return view('auth.login');
+        })->name("login");
 
-        Route::get('/{id}/edit', 'edit')->name("edit");
-        Route::put('/{id}', 'update')->name("update");
-
-        Route::delete('/{id}', 'destroy')->name("destroy");
-
-        Route::post('', 'store')->name("store");
-        Route::get('', 'index')->name("index");
-
+        Route::post('/login', [LoginController::class, 'login']);
     });
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name("home");
 
-// Route::get('/departments', [DepartmentController::class, 'index']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name("logout");
 
-// Route::get('/employees', [EmployeeController::class, 'index']);
+    Route::controller(StudentController::class)
+        ->name("students.")
+        ->prefix("students")
+        ->group(function () {
+            Route::post('', 'store')->name("store");
+            Route::get('', 'index')->name("index");
+        });
 
+
+    Route::controller(TeacherController::class)
+        ->name("teachers.")
+        ->prefix("teachers")
+        ->group(function () {
+            Route::get('', 'index')->name("index");
+            Route::get('/{id}', 'show')->name("show");
+        });
+
+    Route::controller(CourseController::class)
+        ->name("courses.")
+        ->prefix("courses")
+        ->group(function () {
+            Route::get('/create', 'create')->name("create");
+
+            Route::get('/{id}/edit', 'edit')->name("edit");
+            Route::put('/{id}', 'update')->name("update");
+
+            Route::delete('/{id}', 'destroy')->name("destroy");
+
+            Route::post('', 'store')->name("store");
+            Route::get('', 'index')->name("index");
+
+        });
+});
