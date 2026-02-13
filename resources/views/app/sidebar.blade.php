@@ -25,7 +25,7 @@
             <a href="{{ route('courses.index') }}"
                 class="sidebar-link {{ request()->routeIs('courses.*') ? 'active' : '' }}">
                 <i class="bi bi-book"></i>
-                <span>Courses</span>
+                <span>{{ __("app.courses") }}</span>
             </a>
         </li>
         <li class="sidebar-menu-item">
@@ -48,16 +48,16 @@
                 <span>Groups</span>
             </a>
         </li>
-        <li class="sidebar-menu-item mt-auto">
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="sidebar-link logout-btn">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Logout</span>
-                </button>
-            </form>
-        </li>
     </ul>
+    <div class="sidebar-footer">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="sidebar-link text-danger w-100 border-0">
+                <i class="bi bi-box-arrow-right text-danger"></i>
+                <span>Logout</span>
+            </button>
+        </form>
+    </div>
 </aside>
 
 <div class="sidebar-overlay"></div>

@@ -10,30 +10,22 @@ use App\Http\Controllers\TeacherController;
 // Route::get('/', function () {
 //     return view('home');
 // });
+Route::get('locale/{locale}', [HomeController::class, 'locale'])->name('locale')->where('locale', '[a-z]+');
 
 Route::middleware("guest")
-    ->middleware("throttle:60,1")
     ->group(function () {
-        Route::get('/login', function () {
-            return view('auth.login');
-        })->name("login");
 
-        Route::post('/login', [LoginController::class, 'login']);
+        // Dine Login store edilyan yerde throttle bar
+        Route::post('/login', [LoginController::class, 'store'])->middleware("throttle:5,1");
+
+        Route::get('/login', [LoginController::class, 'login'])->name("login");
     });
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name("home");
 
-    Route::post('/logout', [LoginController::class, 'logout'])->name("logout");
-
-    Route::controller(StudentController::class)
-        ->name("students.")
-        ->prefix("students")
-        ->group(function () {
-            Route::post('', 'store')->name("store");
-            Route::get('', 'index')->name("index");
-        });
+    Route::post('/logout', [LoginController::class, 'destroy'])->name("logout");
 
 
     Route::controller(TeacherController::class)
@@ -58,5 +50,13 @@ Route::middleware('auth')->group(function () {
             Route::post('', 'store')->name("store");
             Route::get('', 'index')->name("index");
 
+        });
+
+    Route::controller(StudentController::class)
+        ->name("students.")
+        ->prefix("students")
+        ->group(function () {
+            Route::post('', 'store')->name("store");
+            Route::get('', 'index')->name("index");
         });
 });

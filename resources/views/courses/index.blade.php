@@ -25,7 +25,7 @@
     <h2><i class="bi bi-book"></i> Courses Management</h2>
     <div class="table-header-actions">
       <a href="{{ route('courses.create') }}" class="btn-add">
-        <i class="bi bi-plus-circle"></i> Add New Course
+        <i class="bi bi-plus-circle"></i> {{ __("app.addNew") }}
       </a>
     </div>
   </div>

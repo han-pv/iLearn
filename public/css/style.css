@@ -97,6 +97,8 @@ body {
   transition: transform 0.3s ease;
   z-index: 1000;
   border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
@@ -149,6 +151,9 @@ body {
 
 .sidebar-menu {
   list-style: none;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 0.5rem;
 }
 
 ul {
@@ -215,6 +220,12 @@ ul {
   display: none;
 }
 
+.sidebar-footer {
+  margin-top: auto;
+  padding: 0.5rem 10px 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
 /* Sidebar toggle button removed - now using navbar-toggle */
 
 .sidebar-overlay {
@@ -236,9 +247,41 @@ ul {
 .main-content {
   flex: 1;
   margin-left: var(--sidebar-width);
-  padding: 2rem;
+  padding: 0.5rem 2rem;
   transition: margin-left 0.3s ease;
   overflow-y: auto;
+}
+
+.main-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  margin-bottom: 16px;
+  /* background: white; */
+  /* border: 1px solid var(--border-color); */
+  /* border-radius: 10px; */
+  /* padding: 0.75rem 1rem; */
+  /* margin-bottom: 1.5rem; */
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); */
+}
+
+.main-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.main-navbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.main-navbar-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 @media (max-width: 768px) {
@@ -246,6 +289,12 @@ ul {
     margin-left: 0;
     margin-top: 60px;
     padding: 1rem;
+  }
+
+  .main-navbar {
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1rem;
   }
 }
 

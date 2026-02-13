@@ -4,7 +4,8 @@
 <div class="dashboard-container">
   <!-- Welcome Section -->
   <div class="welcome-section">
-    <h1><i class="bi bi-graph-up"></i> Welcome to iLearn Dashboard</h1>
+    <h1><i class="bi bi-graph-up"></i>  {{ __( 'app.dashboard') }}</h1>
+    <!-- <h1><i class="bi bi-graph-up"></i>  @lang('app.dashboard')</h1> -->
     <p>Manage your courses, teachers, students, and learning groups efficiently</p>
   </div>
 
@@ -12,13 +13,13 @@
   <div class="stats-row">
     <div class="stat-card primary">
       <div class="stat-card-icon"><i class="bi bi-book"></i></div>
-      <div class="stat-card-value" id="courseCount">0</div>
+      <div class="stat-card-value">{{ $courses_count }}</div>
       <div class="stat-card-label">Total Courses</div>
     </div>
 
     <div class="stat-card success">
       <div class="stat-card-icon"><i class="bi bi-person-fill"></i></div>
-      <div class="stat-card-value" id="teacherCount">0</div>
+      <div class="stat-card-value">{{ $teachers_count }}</div>
       <div class="stat-card-label">Active Teachers</div>
     </div>
 

@@ -15,6 +15,7 @@
     @include('app.sidebar')
     
     <div class="main-content">
+        @include('app.navbar')
         @yield('content')
     </div>
 

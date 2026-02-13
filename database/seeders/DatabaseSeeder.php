@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        User::create([
-            'name' => 'Admin',
-            'username' => 'admin',
-            'password' => bcrypt('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Admin',
+        //     'username' => 'admin',
+        //     'password' => bcrypt('password'),
+        // ]);
 
         // $this->call([
         //     BranchSeeder::class,
