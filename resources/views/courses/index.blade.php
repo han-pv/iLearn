@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  @if($courses->count() > 0)
+  @if(! empty($courses) && $courses->count() > 0)
     <div class="table-wrapper">
       <table class="data-table">
         <thead>

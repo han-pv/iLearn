@@ -14,7 +14,7 @@
   <div class="table-header">
     <h2><i class="bi bi-person-badge"></i> Teachers Management</h2>
     <div class="table-header-actions">
-      <a href="#" class="btn-add">
+      <a href="{{ route('teachers.create') }}" class="btn-add">
         <i class="bi bi-plus-circle"></i> Add New Teacher
       </a>
     </div>

@@ -13,7 +13,7 @@ class LocaleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next): Response  // session: locale="ru"
     {
         if (session()->has('locale') and in_array(session('locale'), ['tm', 'ru', 'en'])) {
             app()->setLocale(session('locale'));

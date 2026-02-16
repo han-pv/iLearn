@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class GroupController extends Controller
 {
 
+    public function index()
+    {
+        $groups = Group::paginate(15);
+
+        return view("groups.index")->with([
+            "groups" => $groups
+        ]);
+    }
+
+
     public function makeGroupCode($courseId, $courseName, $seasonId)
     {
         $group = Group::where("season_id", $seasonId)

@@ -11,6 +11,21 @@ class Teacher extends Model
 {
     use HasFactory;
 
+        protected $fillable = [
+        'name',
+        'lastname',
+        'email',
+        'phone',
+        'address',
+        'experience',
+        'degree',
+        'knowledge',
+        'education',
+        'bio',
+        'salary',
+        'image',
+    ];
+
     public function groups(): HasMany
     {
         return $this->hasMany(Group::class);

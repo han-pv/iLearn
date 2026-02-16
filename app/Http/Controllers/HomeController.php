@@ -27,8 +27,8 @@ class HomeController extends Controller
     //     }
     //     return redirect()->back();
     // }
-
-        public function locale($locale="tm") // tm
+    
+    public function locale($locale) // ru
     {
         $locale = in_array($locale, ['tm', 'ru']) ? $locale : 'en';
         session()->put('locale', $locale);
