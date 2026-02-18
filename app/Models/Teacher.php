@@ -23,7 +23,7 @@ class Teacher extends Model
         'education',
         'bio',
         'salary',
-        'image',
+        'image_path',
     ];
 
     public function groups(): HasMany

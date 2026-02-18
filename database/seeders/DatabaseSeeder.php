@@ -17,26 +17,26 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        // User::create([
-        //     'name' => 'Admin',
-        //     'username' => 'admin',
-        //     'password' => bcrypt('password'),
-        // ]);
+        User::create([
+            'name' => 'Admin',
+            'username' => 'admin',
+            'password' => bcrypt('password'),
+        ]);
 
-        // $this->call([
-        //     BranchSeeder::class,
-        //     SeasonSeeder::class,
-        //     ShiftSeeder::class,
-        // ]);
+        $this->call([
+            BranchSeeder::class,
+            SeasonSeeder::class,
+            ShiftSeeder::class,
+        ]);
 
-        // Classroom::factory(50)->create();
+        Classroom::factory(50)->create();
 
-        // $this->call([
-        //     CourseSeeder::class
-        // ]);
+        $this->call([
+            CourseSeeder::class
+        ]);
 
-        // Teacher::factory(50)->create();
-        // Student::factory(200)->create();
-        // Group::factory(100)->create();
+        Teacher::factory(50)->create();
+        Student::factory(200)->create();
+        Group::factory(100)->create();
     }
 }

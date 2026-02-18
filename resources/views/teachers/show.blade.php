@@ -14,7 +14,7 @@
                 <div class="card shadow-sm mb-4">
                     <div class="card-body text-center">
                         <div class="mb-3">
-                            <img src="{{ asset('img/default.jpg') }}" class="w-100" alt="Profile Picture">
+                            <img src="{{ asset($teacher->image_path ? 'storage/' . $teacher->image_path : 'img/default.jpg') }}" class="w-100" alt="Profile Picture">
                         </div>
                         <h4 class="mb-1">{{ $teacher->name }} {{ $teacher->lastname }}</h4>
                         <p class="text-muted mb-3">Branch ID: {{ $teacher->branch_id }}</p>
