@@ -1051,7 +1051,6 @@ ul {
 .form-header {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   margin-bottom: 2rem;
   gap: 2rem;
 }
@@ -1195,10 +1194,9 @@ textarea.form-input {
 .btn-secondary {
   background: var(--primary-light);
   color: var(--primary);
-  padding: 0.85rem 1.5rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--primary);
   border-radius: 6px;
-  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;

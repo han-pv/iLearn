@@ -4,7 +4,10 @@
 <div class="dashboard-container">
   <!-- Welcome Section -->
   <div class="welcome-section">
-    <h1><i class="bi bi-graph-up"></i>  {{ __( 'app.dashboard') }}</h1>
+    @auth
+    <!-- The user is authenticated... -->
+    <h1>Welcome back, {{ Auth::user()->name }}</h1>
+@endauth
     <!-- <h1><i class="bi bi-graph-up"></i>  @lang('app.dashboard')</h1> -->
     <p>Manage your courses, teachers, students, and learning groups efficiently</p>
   </div>
